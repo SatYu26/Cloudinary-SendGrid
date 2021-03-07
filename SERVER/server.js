@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 
+// import routes
+
+const feedbackRoutes = require("./routes/routes.js");
+
 // App
 
 const app = express();
@@ -18,11 +22,7 @@ app.use(cors());
 
 // routes
 
-app.get("/api", (req, res) => {
-  res.json({
-    data: "first server",
-  });
-});
+app.use("/api", feedbackRoutes);
 
 // port
 
