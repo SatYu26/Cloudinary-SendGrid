@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import Layout from "./Layout.js";
 
 const Feedback = () => {
   const [values, setValues] = useState({
@@ -98,7 +99,7 @@ const Feedback = () => {
 
   const feedbackForm = () => (
     <React.Fragment>
-      <div className="form-group pt-5">
+      <div className="form-group">
         <button
           onClick={() => uploadWidget()}
           className="btn btn-outline-secondary btn-block p-5"
@@ -156,10 +157,14 @@ const Feedback = () => {
   );
 
   return (
-    <div>
+    <Layout>
       <ToastContainer />
-      {feedbackForm()}
-    </div>
+
+      <div className="container text-center">
+        <h1>Feedback</h1>
+      </div>
+      <div className="container">{feedbackForm()}</div>
+    </Layout>
   );
 };
 
