@@ -163,7 +163,7 @@ const Feedback = () => {
       <div className="container text-center">
         <h1>Feedback</h1>
       </div>
-      <div className="container">{feedbackForm()}</div>
+      <div className="container col-md-8 offset-md-2">{feedbackForm()}</div>
     </Layout>
   );
 };
