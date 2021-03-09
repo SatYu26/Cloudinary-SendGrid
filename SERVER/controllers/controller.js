@@ -7,7 +7,7 @@ emailFeedback = (req, res) => {
 
   const emailData = {
     to: process.env.EMAIL_TO,
-    from: email,
+    from: process.env.EMAIL_FROM,
     subject: "Feedback form",
     html: `
     <h1>Customer Feedback Form</h1>

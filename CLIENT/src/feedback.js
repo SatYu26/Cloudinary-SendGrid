@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const Feedback = () => {
   const [values, setValues] = useState({
@@ -51,10 +53,26 @@ const Feedback = () => {
       data: { name, email, phone, message, uploadedFiles },
     })
       .then((response) => {
-        console.log("response:", response);
+        console.log("Feedback submit Response:", response);
+        if (response.data.success) {
+          toast.success("Thanks for your Feedback!!");
+        }
+        setValues({
+          ...values,
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+          uploadedFiles: [],
+          buttonText: "Submitted",
+          uploadPhotosButtonText: "Uploaded",
+        });
       })
       .catch((error) => {
-        console.log("error:", error.response);
+        console.log("Feedback submit Error:", error.response);
+        if (error.response.data.error) {
+          toast.console.error("Please try again Later");
+        }
       });
   };
 
@@ -137,7 +155,12 @@ const Feedback = () => {
     </React.Fragment>
   );
 
-  return <div className="p-5">{feedbackForm()}</div>;
+  return (
+    <div>
+      <ToastContainer />
+      {feedbackForm()}
+    </div>
+  );
 };
 
 export default Feedback;
