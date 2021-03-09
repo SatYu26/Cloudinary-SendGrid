@@ -6,6 +6,6 @@ const { emailFeedback } = require("../controllers/controller.js");
 
 // routes
 
-router.get("/", emailFeedback);
+router.post("/feedback", emailFeedback);
 
 module.exports = router;

@@ -1,7 +1,9 @@
+const sgMail = require("@sendgrid/mail");
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 emailFeedback = (req, res) => {
-  res.json({
-    data: "first server req",
-  });
+  console.log(req.body);
 };
 
 module.exports = { emailFeedback };
